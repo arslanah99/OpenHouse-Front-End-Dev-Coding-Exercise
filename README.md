@@ -11,8 +11,7 @@ ScreenShot of main page
 - Axios
 - React-BootStrap
 - React
-- BootStrap
-
+- React-Toastify
 
 ## Installing
 1. Clone repo onto your Machine
