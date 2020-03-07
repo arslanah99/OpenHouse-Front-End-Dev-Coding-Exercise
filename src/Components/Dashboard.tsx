@@ -47,8 +47,6 @@ const Dashboard = () => {
         const communityData = allData[0].data;
         // getting home data i.e: communityids, prces, areas, types
         const homeData = allData[1].data;
-        console.log(communityData);
-        console.log(homeData);
 
         // attaching average prices into communityData
         attachAveragePrice(communityData, homeData);
