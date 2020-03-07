@@ -1,5 +1,5 @@
 # OpenHouse.AI - Front End Web Development Coding Exercise
-To view the live version of this app please visit.
+To view the live version of this app please visit. https://openhouseaifrontendexercise.herokuapp.com/
 
 ## Screenshots
 ScreenShot of main page
