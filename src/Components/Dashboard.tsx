@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import axios from "axios";
 import * as ReactBootStrap from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface propertyObj {
   id: string;
@@ -41,17 +43,22 @@ const Dashboard = () => {
     const getHomes = axios.get(homesURL);
 
     // axios.all is responsible for running both requests and axios.spread is using the spread operator to expand the arrays
-    axios.all([getCommunities, getHomes]).then(
-      axios.spread((...allData) => {
-        // getting community data i.e: names of communities images
-        const communityData = allData[0].data;
-        // getting home data i.e: communityids, prces, areas, types
-        const homeData = allData[1].data;
+    axios
+      .all([getCommunities, getHomes])
+      .then(
+        axios.spread((...allData) => {
+          // getting community data i.e: names of communities images
+          const communityData = allData[0].data;
+          // getting home data i.e: communityids, prces, areas, types
+          const homeData = allData[1].data;
 
-        // attaching average prices into communityData
-        attachAveragePrice(communityData, homeData);
-      })
-    );
+          // attaching average prices into communityData
+          attachAveragePrice(communityData, homeData);
+        })
+      )
+      .catch(err => {
+        toast.error("Oh no! Page not found. .·´¯`(>▂<)´¯`·.");
+      });
   };
   // function to render cards with proper data for each card
   const renderCards = (card: propertyObj, index: number) => {
@@ -72,9 +79,7 @@ const Dashboard = () => {
         <ReactBootStrap.Card.Body>
           <ReactBootStrap.Card.Title>{card.name}</ReactBootStrap.Card.Title>
           <ReactBootStrap.Card.Text>
-            <div>
-              <strong>Avg House Price:</strong>
-            </div>
+            <strong className="avg-price">Avg House Price:</strong>
             {isNaN(card.averagePrice)
               ? "Price not available"
               : "$" + card.averagePrice}
@@ -130,6 +135,9 @@ const Dashboard = () => {
   communities.sort(alphabeticalSort("name"));
   return (
     <div className="container">
+      <>
+        <ToastContainer autoClose={8000} />
+      </>
       <h1>Communities</h1>
       <div className="grid">{communities.map(renderCards)}</div>
     </div>
