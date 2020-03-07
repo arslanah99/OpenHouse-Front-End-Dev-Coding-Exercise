@@ -10,7 +10,7 @@ function App() {
         {/* navbar to render open house image */}
         <nav>
           <ReactBootStrap.Navbar bg="light">
-            <ReactBootStrap.Navbar.Brand href="#home">
+            <ReactBootStrap.Navbar.Brand href="https://openhouse.ai/">
               <img
                 src="https://openhouse.ai/wp-content/uploads/2019/11/OPENHOUSE-ai-logo-Horz-purple-RGB-HR.png"
                 height="48px"
