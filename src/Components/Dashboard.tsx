@@ -72,6 +72,9 @@ const Dashboard = () => {
         <ReactBootStrap.Card.Body>
           <ReactBootStrap.Card.Title>{card.name}</ReactBootStrap.Card.Title>
           <ReactBootStrap.Card.Text>
+            <div>
+              <strong>Avg House Price:</strong>
+            </div>
             {isNaN(card.averagePrice)
               ? "Price not available"
               : "$" + card.averagePrice}
